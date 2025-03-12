@@ -2,13 +2,13 @@ import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import MovieList from "../components/MovieList";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/store/hooks"; // ✅ Import typed hooks
 import { fetchMovies } from "../store/movieSlice";
 import { Movie } from "@/types";
 const Home = () => {
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
-  const dispatch = useDispatch();
-  const { movies, status } = useSelector((state: any) => state.movies);
+  const dispatch = useAppDispatch(); // ✅ Use typed dispatch
+  const { movies, status } = useAppSelector((state) => state.movies);
 
   useEffect(() => {
     dispatch(fetchMovies());

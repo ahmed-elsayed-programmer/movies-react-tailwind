@@ -14,7 +14,7 @@ const initialState: MovieState = {
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   const response = await tmdbApi.getAnimatedMovies();
-  return response.results;
+  return response.data.results;
 });
 
 const movieSlice = createSlice({

@@ -24,9 +24,9 @@ const MovieDetails = () => {
     try {
       setLoading(true);
       const response = await tmdbApi.getMovieDetails(Number(id));
-      setMovie(response);
+      setMovie(response.data);
       setError(null);
-    } catch (error) {
+    } catch {
       setError("Failed to load movie details.");
       setMovie(null);
     } finally {
@@ -36,6 +36,9 @@ const MovieDetails = () => {
 
   useEffect(() => {
     fetchMovie();
+    console.log(loading);
+    console.log(error);
+    console.log(movie);
   }, [fetchMovie]);
 
   if (loading) {

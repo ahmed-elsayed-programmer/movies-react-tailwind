@@ -20,7 +20,7 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.response.use(
-  (response) => response.data ?? response,
+  (response) => response,
   (error) => {
     return Promise.reject(error);
   }

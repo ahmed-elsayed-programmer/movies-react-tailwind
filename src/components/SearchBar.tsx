@@ -14,7 +14,8 @@ const SearchBar = ({
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await tmdbApi.searchMovies(query);
-    onResults(response.results);
+
+    onResults(response.data.results);
   };
 
   return (
