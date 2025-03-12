@@ -4,8 +4,9 @@ import MovieList from "../components/MovieList";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../store/movieSlice";
+import { Movie } from "@/types";
 const Home = () => {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const dispatch = useDispatch();
   const { movies, status } = useSelector((state: any) => state.movies);
 
@@ -17,7 +18,7 @@ const Home = () => {
     return <p className="text-center text-lg font-semibold">Loading...</p>;
   }
 
-  const handleSearchResults = (results: any) => {
+  const handleSearchResults = (results: Movie[]) => {
     setSearchResults(results);
   };
 

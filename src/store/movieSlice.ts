@@ -1,12 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { tmdbApi } from "@/lib/api";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-}
+import { Movie } from "@/types";
 
 interface MovieState {
   movies: Movie[];
@@ -19,8 +13,8 @@ const initialState: MovieState = {
 };
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  const response = await tmdbApi.getPopularMovies();
-  return response.data.results;
+  const response = await tmdbApi.getAnimatedMovies();
+  return response.results;
 });
 
 const movieSlice = createSlice({

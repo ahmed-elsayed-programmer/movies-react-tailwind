@@ -2,15 +2,18 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { tmdbApi } from "@/lib/api";
 import { Button } from "./ui/button";
+import { Movie } from "@/types";
 
-const SearchBar = ({ onResults }: { onResults: (results: any) => void }) => {
+const SearchBar = ({
+  onResults,
+}: {
+  onResults: (results: Movie[]) => void;
+}) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await tmdbApi.searchMovies(query);
-    console.log(response);
-
     onResults(response.results);
   };
 
